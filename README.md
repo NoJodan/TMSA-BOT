@@ -1,6 +1,6 @@
-# Discord Bot Project
+# TMSA BOT DISCORD
 
-Este proyecto es un bot de Discord que utiliza cogs para organizar el código y MongoDB para la gestión de datos.
+Este proyecto es un bot de Discord que se inspira en la novela de Lector Omnisciente.
 
 ## Estructura del Proyecto
 
@@ -9,15 +9,13 @@ discord-bot
 ├── src
 │   ├── bot.py               # Punto de entrada del bot
 │   ├── cogs                 # Carpeta que contiene los cogs del bot
-│   │   ├── __init__.py      # Inicializa el paquete de cogs
-│   │   └── example_cog.py   # Ejemplo de un cog
+│   │   └── moderation.py    # Cog de moderación
 │   ├── database             # Carpeta que contiene la gestión de la base de datos
 │   │   ├── __init__.py      # Inicializa el paquete de la base de datos
 │   │   └── mongo_manager.py  # Manejo de la conexión a MongoDB
 │   └── utils                # Carpeta que contiene funciones utilitarias
 │       └── helpers.py       # Funciones utilitarias
 ├── requirements.txt         # Dependencias del proyecto
-├── .env                     # Variables de entorno
 └── README.md                # Documentación del proyecto
 ```
 
