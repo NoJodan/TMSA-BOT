@@ -48,5 +48,24 @@ class ModerationCog(commands.Cog, name='Moderation'):
         else:
             await ctx.send(f"{ctx.author.mention} You do not have permission to use this command.")
 
+    #Comando prueba para ver si el bot está conectado a la base de datos
+    @commands.command(name='showusers', aliases=['users'])
+    async def show_users(self, ctx):
+        try:
+            collection = self.bot.mongo_manager.database["users"]
+            documents = collection.find()
+
+            users = [str(doc) for doc in documents]
+            if not users:
+                await ctx.send("No hay usuarios en la colección.")
+            else:
+                message = "\n".join(users)
+                if len(message) > 2000:  # Discord tiene un límite de 2000 caracteres por mensaje
+                    await ctx.send("La lista de usuarios es demasiado larga para enviarla en un solo mensaje.")
+                else:
+                    await ctx.send(f"Usuarios en la colección:\n{message}")
+        except Exception as e:
+            await ctx.send(f"Error al acceder a la base de datos: {e}")
+
 async def setup(bot):
     await bot.add_cog(ModerationCog(bot))

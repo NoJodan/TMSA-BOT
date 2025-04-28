@@ -2,11 +2,27 @@ import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
+from database.mongo_manager import MongoManager  # Importar MongoManager
 
+# Cargar variables de entorno
 load_dotenv()
 
+# Obtener valores del archivo .env
 TOKEN = os.getenv('DISCORD_TOKEN')
+MONGODB_URL = os.getenv('MONGODB_URL')
+MONGODB_DB_NAME = os.getenv('MONGODB_DB_NAME')
 
+# Validar que las variables de entorno estén definidas
+if not MONGODB_URL:
+    raise ValueError("La URI de MongoDB (MONGODB_URL) no está definida en el archivo .env")
+if not MONGODB_DB_NAME:
+    raise ValueError("El nombre de la base de datos (MONGODB_DB_NAME) no está definido en el archivo .env")
+
+# Crear la instancia de MongoManager
+mongo_manager = MongoManager(MONGODB_URL, MONGODB_DB_NAME)
+mongo_manager.connect()
+
+# Configurar intents y crear el bot
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
@@ -32,6 +48,8 @@ async def on_ready():
 @bot.event
 async def on_disconnect():
     print('Desconectado del servidor.')
+    mongo_manager.close()
 
 if __name__ == '__main__':
+    bot.mongo_manager = mongo_manager
     bot.run(TOKEN)
