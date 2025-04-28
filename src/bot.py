@@ -8,8 +8,14 @@ load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
 intents = discord.Intents.default()
-bot = commands.Bot(command_prefix=':', intents=intents)
+intents.message_content = True
+intents.members = True
+bot = commands.Bot(command_prefix='$', intents=intents)
 bot.remove_command('help')
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
 
 # Cargar cogs
 @bot.event
