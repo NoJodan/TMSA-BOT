@@ -1,14 +1,15 @@
 from discord.ext import commands
 
-config = ["lawliet0_0"]
+config = [452498453394751538]
 
 class ModerationCog(commands.Cog, name='Moderation'):
     def __init__(self, bot):
         self.bot = bot
+        self.dbUsers = self.bot.mongo_manager["users"]
 
     @commands.command(name='reloadcog', aliases=['rcog'])
     async def reload_cog(self, ctx, cog_name: str):
-        if ctx.message.author.id in config["moderators"]:
+        if ctx.message.author.id in config:
             if not cog_name:
                 await ctx.send(f"{ctx.author.mention} Please provide a cog name to reload, use `reloadcog <cog_name>`")
             else:
@@ -22,7 +23,7 @@ class ModerationCog(commands.Cog, name='Moderation'):
     
     @commands.command(name='unloadcog', aliases=['ucog'])
     async def unload_cog(self, ctx, cog_name: str):
-        if ctx.message.author.id in config["moderators"]:
+        if ctx.message.author.id in config:
             if not cog_name:
                 await ctx.send(f"{ctx.author.mention} Please provide a cog name to unload, use `unloadcog <cog_name>`")
             else:
@@ -36,7 +37,7 @@ class ModerationCog(commands.Cog, name='Moderation'):
     
     @commands.command(name='loadcog', aliases=['lcog'])
     async def load_cog(self, ctx, cog_name: str):
-        if ctx.message.author.id in config["moderators"]:
+        if ctx.message.author.id in config:
             if not cog_name:
                 await ctx.send(f"{ctx.author.mention} Please provide a cog name to load, use `loadcog <cog_name>`")
             else:
@@ -52,8 +53,7 @@ class ModerationCog(commands.Cog, name='Moderation'):
     @commands.command(name='showusers', aliases=['users'])
     async def show_users(self, ctx):
         try:
-            collection = self.bot.mongo_manager.database["users"]
-            documents = collection.find()
+            documents = self.dbUsers.find()
 
             users = [str(doc) for doc in documents]
             if not users:

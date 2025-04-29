@@ -4,7 +4,7 @@ Este proyecto es un bot de Discord que se inspira en la novela de Lector Omnisci
 
 ## Estructura del Proyecto
 
-```
+```text
 discord-bot
 ├── src
 │   ├── bot.py               # Punto de entrada del bot
@@ -22,19 +22,22 @@ discord-bot
 ## Instalación
 
 1. Clona el repositorio:
-   ```
+
+   ```text
    git clone <URL_DEL_REPOSITORIO>
    cd discord-bot
    ```
 
 2. Crea un entorno virtual y actívalo:
-   ```
+
+   ```text
    python -m venv venv
    source venv/bin/activate  # En Windows usa `venv\Scripts\activate`
    ```
 
 3. Instala las dependencias:
-   ```
+
+   ```text
    pip install -r requirements.txt
    ```
 
@@ -43,7 +46,8 @@ discord-bot
 ## Uso
 
 Para ejecutar el bot, utiliza el siguiente comando:
-```
+
+```text
 python src/bot.py
 ```
 

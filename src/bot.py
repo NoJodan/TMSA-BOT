@@ -51,5 +51,5 @@ async def on_disconnect():
     mongo_manager.close()
 
 if __name__ == '__main__':
-    bot.mongo_manager = mongo_manager
+    bot.mongo_manager = mongo_manager.database
     bot.run(TOKEN)
