@@ -11,7 +11,6 @@ discord-bot
 │   ├── cogs                 # Carpeta que contiene los cogs del bot
 │   │   └── moderation.py    # Cog de moderación
 │   ├── database             # Carpeta que contiene la gestión de la base de datos
-│   │   ├── __init__.py      # Inicializa el paquete de la base de datos
 │   │   └── mongo_manager.py  # Manejo de la conexión a MongoDB
 │   └── utils                # Carpeta que contiene funciones utilitarias
 │       └── helpers.py       # Funciones utilitarias
