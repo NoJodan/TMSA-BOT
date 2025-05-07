@@ -36,10 +36,13 @@ Failure: Death```'''
                    'money'      :       10,
                    'weapon'     :       0,
                    'armor'      :       0,
-                   'inv'        :       {'white crystal' :   1,
-                                         'wolf tooth' :   1},
-                   'hab'        :       ['Double hit',
-                                         'Whip'],
+                   'inv'        :       {'knife' :  1},
+                   'skills'     :       {'Reader':  1},
+                   'stigmata'   :       ['None'],
+                   'stories'    :       ['None'],
+                   'quests'     :       ['None'],
+                   'isConstellation' :   0,
+                   'nebula'     :       'None',
                    'oncommand'  :       0,
                    'dateCreate' :       ctx.message.created_at}
         
