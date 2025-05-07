@@ -31,7 +31,7 @@ bot.remove_command('help')
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send('pong')
+    await ctx.send('pong!')
 
 # Cargar cogs
 @bot.event
