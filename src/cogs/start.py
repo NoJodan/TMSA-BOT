@@ -6,7 +6,7 @@ class Start(commands.Cog, name = 'start'):
         self.bot = bot
         self.dbUsers = self.bot.mongo_manager["users"]
         
-    @commands.command(name = 'start')
+    @commands.hybrid_command(name = 'start')
     async def start(self, ctx):
         
         startinfo = '''```
@@ -38,7 +38,7 @@ Failure: Death```'''
                    'armor'      :       0,
                    'inv'        :       {'knife' :  1},
                    'skills'     :       {'Reader':  1},
-                   'stigmata'   :       ['None'],
+                   'stigma'     :       ['None'],
                    'stories'    :       ['None'],
                    'quests'     :       ['None'],
                    'isConstellation' :   0,

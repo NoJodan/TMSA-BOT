@@ -29,7 +29,7 @@ intents.members = True
 bot = commands.Bot(command_prefix='$', intents=intents)
 bot.remove_command('help')
 
-@bot.command()
+@bot.command(name='ping', description='Responde con pong!')
 async def ping(ctx):
     await ctx.send('pong!')
 
@@ -44,6 +44,12 @@ async def on_ready():
                 print(f'Cog {filename} cargado.')
             except Exception as e:
                 print(f'Error al cargar {filename}: {e}')
+    
+    try:
+        await bot.tree.sync()
+        print('Sincronización de comandos completada.')
+    except Exception as e:
+        print(f'Error al sincronizar comandos: {e}')
 
 @bot.event
 async def on_disconnect():
